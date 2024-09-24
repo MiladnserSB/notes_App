@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:learning_project_notes_app/constants.dart';
 import 'package:learning_project_notes_app/widgets/add_note_bottom_sheet.dart';
 import 'package:learning_project_notes_app/widgets/notes_view_body.dart';
 
@@ -14,7 +15,7 @@ class NotesView extends StatelessWidget {
               return AddNoteBottomSheet();
             }, shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)) );
           },
-          backgroundColor: const Color(0xFF53EBD6),
+          backgroundColor:  kPrimaryColor,
           child:  Icon(
             Icons.add,
             color: Colors.black,
