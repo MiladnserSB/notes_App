@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:learning_project_notes_app/constants.dart';
 import 'package:learning_project_notes_app/cubits/cubit/add_note_cubit.dart';
+import 'package:learning_project_notes_app/cubits/cubit/notes_cubit.dart';
 import 'package:learning_project_notes_app/widgets/add_note_form.dart';
 import 'package:learning_project_notes_app/widgets/custom_button.dart';
 import 'package:learning_project_notes_app/widgets/custom_text_field.dart';
@@ -17,6 +18,7 @@ class AddNoteBottomSheet extends StatelessWidget {
       child: BlocConsumer<AddNoteCubit, AddNoteState>(
         listener: (context, state) {
           if (state is AddNoteSuccess) {
+            BlocProvider.of<NotesCubit>(context).fetchNotes();
             Navigator.of(context).pop();
           } else if (state is AddNoteFailure) {
             ScaffoldMessenger.of(context).showSnackBar(
