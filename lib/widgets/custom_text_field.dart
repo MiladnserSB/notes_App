@@ -21,7 +21,9 @@ class CustomTextField extends StatelessWidget {
         contentPadding: EdgeInsets.all(16),
         hintText: hint,
         hintStyle: TextStyle(color: kPrimaryColor),
+        border: buildBorder(kPrimaryColor),
         enabledBorder: buildBorder(),
+        // errorBorder:buildBorder(kPrimaryColor),
         focusedBorder: buildBorder(kPrimaryColor),
       ),
     );

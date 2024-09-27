@@ -51,26 +51,29 @@ class _AddNoteFormState extends State<AddNoteForm> {
           ),
           BlocBuilder<AddNoteCubit, AddNoteState>(
             builder: (context, state) {
-              return CustomButton(
-                isLoading: state is AddNoteLoading ? true : false,
-                title: 'Add',
-                onTap: () {
-                  if (formKey.currentState!.validate()) {
-                    print('object');
-                    formKey.currentState!.save();
-                    var noteModel = NoteModel(
-                        title: title!,
-                        subTitle: content!,
-                        date: DateTime.now().toString(),
-                        color: Colors.deepOrange.value);
-                    BlocProvider.of<AddNoteCubit>(context).addNote(noteModel);
-                  } else {
-                    autovalidateMode = AutovalidateMode.always;
-                    setState(
-                      () {},
-                    );
-                  }
-                },
+              return Padding(
+                padding: const EdgeInsets.only(bottom: 16.0),
+                child: CustomButton(
+                  isLoading: state is AddNoteLoading ? true : false,
+                  title: 'Add',
+                  onTap: () {
+                    if (formKey.currentState!.validate()) {
+                      print('object');
+                      formKey.currentState!.save();
+                      var noteModel = NoteModel(
+                          title: title!,
+                          subTitle: content!,
+                          date: DateTime.now().toString(),
+                          color: Colors.deepOrange.value);
+                      BlocProvider.of<AddNoteCubit>(context).addNote(noteModel);
+                    } else {
+                      autovalidateMode = AutovalidateMode.always;
+                      setState(
+                        () {},
+                      );
+                    }
+                  },
+                ),
               );
             },
           ),
